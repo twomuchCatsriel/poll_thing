@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Poll Window</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div> <!-- Container -->
+            <h1 class="pollTop">Poll: Liker du Pizza? </h1>
+            
+            <div id="container">
+                
+                <!--<form id="pollArea">
+                    <input type="radio" id="option1" value="Ja" name="option" class="options"> <label for="option1">Ja</label> <br>
+                    <input type="radio" id="option2" value="Nei" name="option" class="options"> <label for="option2">Nei</label> <br>
+                    <input type="radio" id="option3" value="Kanskje" name="option" class="options"> <label for="option3"> Kanskje</label> <br>
+                </form>-->
+
+                <ul id="pollArea">
+                    <li> <button id="option1" class="options">Ja</button></li> 
+                    <li> <button id="option2" class="options">Nei</button></li>
+                    <li> <button id="option3" class="options">Kanskje</button></li>
+                </ul>
+
+                <div id="results">
+                    <h1>Resultater</h1>
+                    <p>Ja - <span id="percentYes">0</span>%</p>
+                    <p>Nei - <span id="percentNo">0</span>%</p>
+                    <p>Kanskje - <span id="percentMaybe">0</span>%</p>
+                </div>
+            </div>
+        </div>
+        <script src="js/new_poll.js"></script>
+    </body>
+</html>

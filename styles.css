@@ -1,0 +1,44 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EBE8DB;
+}
+
+.pollTop{
+    text-align: center;
+    background-color: #B03052;
+    color: white;
+    padding: 10px;
+    margin-top: 0;
+}
+
+#container{
+    border: solid black 2px;
+    background-color: white;
+    padding: 10px;
+    margin: 0 auto;
+    width: 90%;
+
+}
+
+#results{
+    display: none;
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.options{
+    padding: 10px;
+    width: 80%;
+    font-size: 20px;
+
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
