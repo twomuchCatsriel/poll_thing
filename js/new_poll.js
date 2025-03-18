@@ -37,28 +37,22 @@ function addPointsAndSubmit(ans){ // this is also mostly a placeholder
         points[2] += 1;
     }
 
-    localStorage.setItem("PointsLS", JSON.stringify(points));
-    console.log(JSON.parse(localStorage.getItem("PointsLS")))
+    fetch("http://192.168.167.15:3000/votes", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: ans.JSON
+    })
+    .then(response => response.json())
+    .then(response => console.log(JSON.stringify(response)))
 
     let total = (points[0] + points[1] + points[2]);
     percentYes.innerHTML = Math.floor((points[0]/total) * 100);
     percentNo.innerHTML = Math.floor((points[1]/total) * 100);
     percentMaybe.innerHTML = Math.floor((points[2]/total) * 100);
-
-
-
 }
-
-document.addEventListener("DOMContentLoaded", () => { // A temporary solution just incase Mori can't set up a testing server :3c
-    points = JSON.parse(localStorage.getItem("PointsLS"))
-    console.log(points)
-
-    if (points === null){
-        points = [0,0,0]
-    } 
-
-    localStorage.setItem("PointsLS", JSON.stringify(points));
-})
 
 for(let i = 0; i < options.length; i++){ // register clicks 
     options[i].addEventListener("click", () => {
@@ -68,19 +62,3 @@ for(let i = 0; i < options.length; i++){ // register clicks
         console.log(answer); //debug
     })
 }
-
-
-
-
-// Unused Code as of no
-/*fetch("http://192.168.167.15:5000", { // POST idk if i'll keep this depends tbh
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(answer)
-        })
-        .then(response => response.json())
-        .then(response => console.log(JSON.stringify(response)))
-*/
