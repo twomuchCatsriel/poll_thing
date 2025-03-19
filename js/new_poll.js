@@ -12,6 +12,7 @@ const percentMaybe = document.getElementById("percentMaybe");
 
 // Global Variales 
 let answer;
+let responseRaw;
 
 let points = [
     0, // Ja
@@ -24,7 +25,7 @@ function showResults()
     pollArea.style.display = "none";
     resultsArea.style.display = "inline";
 }
-
+  
 function addPointsAndSubmit(ans){ // this is also mostly a placeholder 
     let idNum;
     if(ans === options[0].innerHTML){
@@ -51,20 +52,24 @@ function addPointsAndSubmit(ans){ // this is also mostly a placeholder
         body: JSON.stringify(idObj)
     })
     .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((json) => {
+        points[0] = json.message.answers.find(answer => answer.id === "A").votes;
+        points[1] = json.message.answers.find(answer => answer.id === "B").votes;
+        points[2] = json.message.answers.find(answer => answer.id === "C").votes;
+
+        let total = (points[0] + points[1] + points[2]);
+        percentYes.innerHTML = Math.floor((points[0]/total) * 100);
+        percentNo.innerHTML = Math.floor((points[1]/total) * 100);
+        percentMaybe.innerHTML = Math.floor((points[2]/total) * 100);
+    });
 }
 
-for(let i = 0; i < options.length; i++){ // register clicks 
+for(let i = 0; i < options.length; i++){ // register clicks 2
     options[i].addEventListener("click", () => {
         answer = options[i].innerHTML;
-        addPointsAndSubmit(answer);
+
+        addPointsAndSubmit(answer)
         showResults();
         console.log(answer); //debug
     })
 }
-
-// bleh
-/*  let total = (points[0] + points[1] + points[2]);
-    percentYes.innerHTML = Math.floor((points[0]/total) * 100);
-    percentNo.innerHTML = Math.floor((points[1]/total) * 100);
-    percentMaybe.innerHTML = Math.floor((points[2]/total) * 100); */
