@@ -16,7 +16,6 @@ const totalMaybe = document.getElementById("totalMaybe");
 
 // Global Variales 
 let answer;
-let responseRaw;
 
 let points = [
     0, // Ja
