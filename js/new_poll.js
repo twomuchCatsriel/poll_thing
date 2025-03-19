@@ -10,6 +10,10 @@ const percentYes = document.getElementById("percentYes");
 const percentNo = document.getElementById("percentNo");
 const percentMaybe = document.getElementById("percentMaybe");
 
+const totalYes = document.getElementById("totalYes");
+const totalNo = document.getElementById("totalNo");
+const totalMaybe = document.getElementById("totalMaybe");
+
 // Global Variales 
 let answer;
 let responseRaw;
@@ -57,10 +61,16 @@ function addPointsAndSubmit(ans){ // this is also mostly a placeholder
         points[1] = json.message.answers.find(answer => answer.id === "B").votes;
         points[2] = json.message.answers.find(answer => answer.id === "C").votes;
 
+        totalYes.innerHTML = points[0];
+        totalNo.innerHTML = points[1];
+        totalMaybe.innerHTML = points[2];
+
         let total = (points[0] + points[1] + points[2]);
         percentYes.innerHTML = Math.floor((points[0]/total) * 100);
         percentNo.innerHTML = Math.floor((points[1]/total) * 100);
         percentMaybe.innerHTML = Math.floor((points[2]/total) * 100);
+
+        localStorage.setItem("hasAnswered", "true")
     });
 }
 
