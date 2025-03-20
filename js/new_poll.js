@@ -29,7 +29,7 @@ function showResults()
     resultsArea.style.display = "inline";
 }
   
-function addPointsAndSubmit(ans){ // this is also mostly a placeholder 
+function addPointsAndSubmit(ans){
     let idNum;
     if(ans === options[0].innerHTML){
         idNum = "A";
